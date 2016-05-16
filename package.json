@@ -1,0 +1,31 @@
+{
+  "name": "i0",
+  "version": "0.0.1",
+  "description": "i0",
+  "main": "index.js",
+  "dependencies": {
+    "cmnd": "0.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IzumrudTech/i0.git"
+  },
+  "keywords": [
+    "i0",
+    "generator",
+    "boilerplate"
+  ],
+  "author": "Izumrud Technologies",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IzumrudTech/i0/issues"
+  },
+  "homepage": "https://github.com/IzumrudTech/i0#readme",
+  "bin": {
+	  "i0": "./index.js"
+  }
+}
