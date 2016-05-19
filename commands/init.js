@@ -1,4 +1,5 @@
 const createDir = require('../libs/createDir');
+const colors = require('colors/safe');
 
 module.exports = (() => {
 
@@ -26,9 +27,9 @@ module.exports = (() => {
     }
 
 	createDirs(path) {
-		createDir(path, 'vendor', '  ├── vendor',   '  ├── vendor (already created)');
-		createDir(path, 'custom', '  ├── custom', '  ├── custom (already created)');
-		createDir(path, 'generated', '  └── generated', '  └── generated (already created)');
+		createDir(path, 'vendor', '  ├── vendor ' + colors.green('✔'),   '  ├── vendor ' + colors.red('✖ (already created)'));
+		createDir(path, 'custom', '  ├── custom ' + colors.green('✔'), '  ├── custom ' + colors.red('✖ (already created)'));
+		createDir(path, 'generated', '  └── generated ' + colors.green('✔'), '  └── generated ' + colors.red('✖ (already created)'));
 	}
 
     run(args, flags, vflags, callback) {
@@ -39,7 +40,7 @@ module.exports = (() => {
 
 	  if(args.length < 1) {
 		console.log('i0 initialization');
-		createDir('./', 'i0', '└─┬ i0', '└─┬ i0 already initialized!');
+		createDir('./', 'i0', '└─┬ i0 ' + colors.green('✔'), '└─┬ i0 ' + colors.red('already initialized!'));
 		this.createDirs('./i0/');
 	  }
 

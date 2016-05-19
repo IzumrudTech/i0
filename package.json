@@ -4,7 +4,8 @@
   "description": "i0",
   "main": "index.js",
   "dependencies": {
-    "cmnd": "0.0.6"
+    "cmnd": "0.0.6",
+    "colors": "^1.1.2"
   },
   "devDependencies": {},
   "scripts": {
@@ -26,6 +27,6 @@
   },
   "homepage": "https://github.com/IzumrudTech/i0#readme",
   "bin": {
-	  "i0": "./index.js"
+    "i0": "./index.js"
   }
 }
