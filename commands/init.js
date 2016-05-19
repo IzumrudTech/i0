@@ -1,3 +1,5 @@
+const createDir = require('../libs/createDir');
+
 module.exports = (() => {
 
   'use strict';
@@ -23,15 +25,25 @@ module.exports = (() => {
 
     }
 
+	createDirs(path) {
+		createDir(path, 'vendor', '  ├── vendor',   '  ├── vendor (already created)');
+		createDir(path, 'custom', '  ├── custom', '  ├── custom (already created)');
+		createDir(path, 'generated', '  └── generated', '  └── generated (already created)');
+	}
+
     run(args, flags, vflags, callback) {
 
       // Run code here.
       // To throw an error, use: callback(new Error(msg))
       // To optionally return a result, use: callback(null, result)
 
+	  if(args.length < 1) {
+		console.log('i0 initialization');
+		createDir('./', 'i0', '└─┬ i0', '└─┬ i0 already initialized!');
+		this.createDirs('./i0/');
+	  }
 
-
-      callback(null, 'hello cli!');
+      callback(null);
 
     }
 
