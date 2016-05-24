@@ -1,4 +1,4 @@
-const createDir = require('../libs/createDir');
+const createDir = require('../utils/createDir');
 const colors = require('colors/safe');
 
 module.exports = (() => {
