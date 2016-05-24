@@ -1,8 +1,9 @@
 const fs = require('fs');
+const isExistsDir = require('./isExistsDir');
 
 module.exports = function createDir(path, name, msg, isExistsMsg) {
 	try {
-		if (!fs.existsSync(path + name)) {
+		if (isExistsDir(path + name)) {
 			fs.mkdirSync(path + name);
 			if (msg) {
 				console.log(msg);
