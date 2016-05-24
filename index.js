@@ -4,6 +4,15 @@
 
 const CommandLineInterface = require('cmnd').CommandLineInterface;
 const CLI = new CommandLineInterface();
+const globalHelp = require('./utils/globalHelp');
 
 CLI.load(__dirname, './commands');
-CLI.run(process.argv.slice(2));
+try{
+	CLI.run(process.argv.slice(2));
+} catch(e) {
+	if (e.message === "Cannot read property 'split' of undefined") {
+		console.log(globalHelp());
+	} else {
+		console.error(e);
+	}
+}
