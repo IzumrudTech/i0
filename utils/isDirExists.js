@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-module.exports = function isExistsDir(path) {
+module.exports = function isDirExists(path) {
 	try {
 		if (!fs.existsSync(path)) {
 			return true;

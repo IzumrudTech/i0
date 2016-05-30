@@ -1,5 +1,4 @@
 const createDir = require('../utils/createDir');
-const isExistsDir = require('../utils/isExistsDir');
 const colors = require('colors/safe');
 
 module.exports = (() => {
@@ -41,8 +40,20 @@ module.exports = (() => {
 			customAsci = '├─┬';
 		}
 
-		createDir(path, 'vendor', spaces + '├── ' + colors.yellow('vendor') + ' ' + colors.green('✔'),   spaces + '├── ' + colors.yellow('vendor') + ' ' + colors.red('✖ (already created)'));
-		createDir(path, 'custom', spaces + customAsci + ' ' + colors.yellow('custom') + ' ' + colors.green('✔'), spaces + customAsci + ' ' + colors.yellow('custom') + ' ' + colors.red('✖ (already created)'));
+		createDir(
+			path,
+			'vendor',
+			spaces + '├── ' + colors.yellow('vendor') + ' ' + colors.green('✔'),
+			spaces + '├── ' + colors.yellow('vendor') + ' ' + colors.red('✖ (already created)'),
+			spaces + '├── ' + colors.yellow('vendor') + ' ' + colors.red('✖ (can\'t contain slash)')
+		);
+		createDir(
+			path,
+			'custom',
+			spaces + customAsci + ' ' + colors.yellow('custom') + ' ' + colors.green('✔'),
+			spaces + customAsci + ' ' + colors.yellow('custom') + ' ' + colors.red('✖ (already created)'),
+			spaces + customAsci + ' ' + colors.yellow('custom') + ' ' + colors.red('✖ (can\'t contain slash)')
+		);
 
 		let self = this;
 		if (configNamesLength > 0) {
@@ -53,12 +64,32 @@ module.exports = (() => {
 					asci = '└─┬';
 					newSpaces =  '  │   ';
 				}
-				createDir(path + '/custom/', configName, spaces + '│ ' + asci + ' ' + colors.green(configName) + ' ' + colors.green('✔'), spaces + '│ ' + asci + ' ' + colors.green(configName) + ' ' + colors.red('✖ (already created)'));
+				if (/\/+/.test(configName)) {
+					asci = '├──';
+					if (key === (configNamesLength - 1)) {
+						asci = '└──';
+					}
+					console.log(spaces + '│ ' + asci + ' ' + colors.green(configName) + ' ' + colors.red('✖ (can\'t contain slash)'));
+					return;
+				}
+				createDir(
+					path + '/custom/',
+					configName,
+					spaces + '│ ' + asci + ' ' + colors.green(configName) + ' ' + colors.green('✔'),
+					spaces + '│ ' + asci + ' ' + colors.green(configName) + ' ' + colors.red('✖ (already created)'),
+					spaces + '│ ' + asci + ' ' + colors.green(configName) + ' ' + colors.red('✖ (can\'t contain slash)')
+				);
 				self.createDirs('./i0/custom/' + configName + '/', undefined, newSpaces);
 			});
 		}
 
-		createDir(path, 'generated', spaces + '└── ' + colors.yellow('generated') + ' ' + colors.green('✔'), spaces + '└── ' + colors.yellow('generated') + ' ' + colors.red('✖ (already created)'));
+		createDir(
+			path,
+			'generated',
+			spaces + '└── ' + colors.yellow('generated') + ' ' + colors.green('✔'),
+			spaces + '└── ' + colors.yellow('generated') + ' ' + colors.red('✖ (already created)'),
+			spaces + '└── ' + colors.yellow('generated') + ' ' + colors.red('✖ (can\'t contain slash)')
+		);
 	}
 
     run(args, flags, vflags, callback) {
@@ -73,7 +104,13 @@ module.exports = (() => {
 			console.log(args.join(', ') + ' initialization');
 		}
 
-		createDir('./', 'i0', '└─┬ ' + colors.green('i0') + ' ' + colors.green('✔'), '└─┬ ' + colors.green('i0') + ' ' + colors.red('already initialized!'));
+		createDir(
+			'./',
+			'i0',
+			'└─┬ ' + colors.green('i0') + ' ' + colors.green('✔'),
+			'└─┬ ' + colors.green('i0') + ' ' + colors.red('already initialized!'),
+			'└─┬ ' + colors.green('i0') + ' ' + colors.red('can\'t contain slash!')
+		);
 		this.createDirs('./i0/', args);
 
       callback(null);

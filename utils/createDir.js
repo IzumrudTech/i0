@@ -1,9 +1,14 @@
 const fs = require('fs');
-const isExistsDir = require('./isExistsDir');
+const isDirExists = require('./isDirExists');
+const colors = require('colors/safe');
 
-module.exports = function createDir(path, name, msg, isExistsMsg) {
+module.exports = function createDir(path, name, msg, isExistsMsg, containsSlash) {
 	try {
-		if (isExistsDir(path + name)) {
+		if (/\/+/.test(name)) {
+			console.log(containsSlash);
+			return;
+		}
+		if (isDirExists(path + name)) {
 			fs.mkdirSync(path + name);
 			if (msg) {
 				console.log(msg);
