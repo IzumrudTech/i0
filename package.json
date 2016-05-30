@@ -1,10 +1,10 @@
 {
   "name": "i0",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Cool boilerplate generator.",
   "main": "index.js",
   "dependencies": {
-    "cmnd": "git+https://github.com/GuavaStudio/cmnd.git",
+    "termos": "^0.0.2",
     "colors": "^1.1.2"
   },
   "devDependencies": {},

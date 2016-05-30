@@ -5,7 +5,7 @@ module.exports = (() => {
 
   'use strict';
 
-  const Command = require('cmnd').Command;
+  const Command = require('termos').Command;
 
   class InitCommand extends Command {
 

@@ -2,7 +2,7 @@
 
 'use strict';
 
-const CommandLineInterface = require('cmnd').CommandLineInterface;
+const CommandLineInterface = require('termos').CommandLineInterface;
 const CLI = new CommandLineInterface();
 const globalHelp = require('./utils/globalHelp');
 
