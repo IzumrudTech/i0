@@ -1,11 +1,11 @@
 {
   "name": "i0",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Cool boilerplate generator.",
   "main": "index.js",
   "dependencies": {
-    "termos": "^0.0.2",
-    "colors": "^1.1.2"
+    "colors": "^1.1.2",
+    "termos": "^0.1.0"
   },
   "devDependencies": {},
   "scripts": {
